@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+	<h:form id="mainMenuForm">
+		<div class="mainMenu">
+			<p:menubar style="padding:0px;">
+				<p:submenu label="SubMenu" >
+					<p:menuitem value="Home" action="#{homeBean.load}" />
+				</p:submenu>			
+				
+				<p:menuitem value="About" action="#{homeBean.about}" />
+				
+				<f:facet name="options">
+					<p:inputText style="margin-right:10px" placeholder="Search" />
+					<p:commandButton id="homeButton" icon="ui-icon-home" ajax="false" immediate="true" action="#{homeBean.load}" />
+					<p:tooltip for="homeButton" value="#{msg.label_home}" />
+	
+					<p:commandButton id="helpButton" icon="ui-icon-help" ajax="false" immediate="true" 
+						onclick="window.open('#{request.contextPath}/views/help/index.html', '_blank'); return false;" />
+					<p:tooltip for="helpButton" value="#{msg.label_help}" />
+	
+					<p:commandButton id="logoutButton" onclick="PF('confirmationLogout').show()" icon="ui-icon-power" ajax="true" immediate="true" />
+					<p:tooltip for="logoutButton" value="#{msg.label_logout}" />
+					
+					 <p:confirmDialog header="#{msg.label_logout_confirmation_header}" message="#{msg.label_logout_confirmation_message}" 
+					 			icon="ui-icon-alert" showEffect="fade" hideEffect="explode" widgetVar="confirmationLogout">
+						<p:commandButton value="#{msg.label_yes}" action="#{loginBean.doLogout}" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" ajax="false" />				
+						<p:commandButton value="#{msg.label_no}" onclick="PF('confirmationLogout').hide()" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+				    </p:confirmDialog>
+					
+				</f:facet>
+			</p:menubar>		
+		</div>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<immediateFlush>false</immediateFlush>
+		</encoder>
+	</appender>
+
+	<appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- PASTA logs do SERVIDOR WEBLOGIC -->
+		<File>./logs/oracle/application/application.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>./logs/oracle/application/application.log.%d{yyyy-MM-dd_HH_mm}.zip</FileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<immediateFlush>false</immediateFlush>
+		</encoder>
+	</appender>
+
+	<logger name="com.application" level="DEBUG" />
+	<logger name="com.application.listeners" level="DEBUG" />
+
+	<root level="WARN">
+		<appender-ref ref="LOGFILE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+	
+</configuration>

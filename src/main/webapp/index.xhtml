@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:o="http://omnifaces.org/ui">
+
+	<h:head>
+		<f:loadBundle basename="version" var="V"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/style.css" media="screen" />		
+		<script type="text/javascript" src="#{request.contextPath}/resources/js/all.js"></script>
+		<title>
+			<h:outputText value="#{msg.application_login}" /> - <h:outputText value="#{msg.application_title}" />
+		</title>
+	</h:head>	
+	<h:body>
+		<h:form id="mainForm">
+			<div class="divLogin">
+				<p:panel header="#{msg.application_title}" footer="#{msg.application_footer}" styleClass="divLogin" >
+					<f:facet name="header">
+						<h:outputText value="#{msg.application_login}" /> - <h:outputText value="#{msg.application_title}" />
+					</f:facet>
+					<div style='position:absolut; top:0; left:0; height: 120px; margin-left: -12px; margin-right: -12px; margin-top: -5px'>
+						<h:graphicImage url="/resources/images/header.jpg" width="100%" height="100px" />	
+					</div>			
+					<div>
+						<h:form id="FormlogInOut">
+							<p:focus for="j_username" />
+							<p:outputLabel for="j_username" value="#{msg.application_username}" />
+							<p:inputText id="j_username" required="true" maxlength="10" size="14" />
+							<br/>
+							<br/>
+							<p:outputLabel for="j_password" value="#{msg.application_password}" />
+							<p:password id="j_password" required="true" size="14" />
+							<div style="margin-top: 20px;">
+								<p:commandButton value="#{msg.label_login}" action="#{loginBean.doLogin}" ajax="false" style="width: 170px;" /><br/>
+							</div>
+						</h:form>
+					</div>
+					<p:messages layout="table" infoClass="infoMessages" warnClass="warnMessages" errorClass="errorMessages" />					
+				</p:panel>
+				<div style="float: right;"><h:outputText value="#{msg.application_version}: #{V.version}" /></div>
+			</div>
+		</h:form>	
+	</h:body>
+
+</ui:composition>

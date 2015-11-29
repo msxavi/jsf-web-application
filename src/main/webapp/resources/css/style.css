@@ -1,0 +1,63 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+	font: 12px Tahoma;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+.infoMessages {
+	text-align: left;
+	color: #008B45;
+}
+
+.warnMessages {
+	text-align: left;
+	color: #FFA500;
+}
+
+.errorMessages {
+	text-align: left;
+	color: #EE0000;	
+}
+
+.divLogin {
+	width:500px;
+	margin: auto;
+}
+
+.applicationTitle {
+	font-size: 18pt;
+	font-weight: bolder;
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+}
+
+.headerDetails {
+	font-weight: bold;
+	text-align: right;
+	position: absolute;
+	top: 5px;
+	right:1px;
+}
+
+.mainFooter {
+	padding-top: 15px;
+	font-size: 10pt;
+}
+
+.mainHeader {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.mainMenu {
+	padding-bottom: 5px;
+}

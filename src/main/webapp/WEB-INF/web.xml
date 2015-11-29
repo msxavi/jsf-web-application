@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- Basic -->
+	<display-name>web-application</display-name>
+	<welcome-file-list>
+		<welcome-file>index.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+
+	<!-- ************************ LISTENERS *************************** -->
+	<listener>
+		<listener-class>com.application.listeners.ApplicationContextListener</listener-class>
+	</listener>
+	<!-- ************************ LISTENERS END *************************** -->
+
+
+	<!-- ************************ SERVLETS *************************** -->
+	<servlet>
+		<servlet-name>faces</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>faces</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<!-- ************************ SERVLETS END *************************** -->
+
+
+	<!-- ************************ PARAMS *************************** -->
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<mime-mapping>
+		<extension>xhtml</extension>
+		<mime-type>application/xhtml+xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>png</extension>
+		<mime-type>image/png</mime-type>
+	</mime-mapping>
+
+	<!-- ************************ PARAMS END *************************** -->
+
+
+	<!-- ************************ FILTERS *************************** -->
+	<filter>
+		<filter-name>primeFacesFileUploadFilter</filter-name>
+		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>primeFacesFileUploadFilter</filter-name>
+		<servlet-name>faces</servlet-name>
+	</filter-mapping>
+	<!-- ************************ FILTERS END *************************** -->
+
+</web-app>

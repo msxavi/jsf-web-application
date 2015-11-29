@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:o="http://omnifaces.org/ui">
+
+	<h:form>
+		<div id="mainHead" class="mainHeader">
+			<div style='position: relative; top: 0px; left: 0px'>
+				<h:graphicImage url="/resources/images/header.jpg" width="100%" height="10%" />
+			</div>
+			<div id="applicationTitle" class="applicationTitle">
+				<h:outputText value="#{msg.application_title}" />
+			</div>
+			<div class="headerDetails">
+				<p:clock pattern="#{msg.application_timestamp_pattern}"	mode="server" />
+								
+			</div>
+			<div class="headerDetails" style="margin-top: 20px" >
+				<h:outputText value="(#{requestScope.serverName})" styleClass="headerDetails" />							
+			</div>						
+		</div>
+	</h:form>
+</ui:composition>

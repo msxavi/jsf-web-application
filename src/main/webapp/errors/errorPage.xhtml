@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	template="/WEB-INF/templates/MainFace.xhtml">
+
+	<ui:define name="body">
+		<h:form id="mainForm">
+			<p:panel toggleable="false" header="#{msg.error_page_title}">
+				<div class="defaultForm">
+					<p:layout style="min-width:460px;min-height:500px;" id="layout">
+						<p:layoutUnit position="west" resizable="false" size="9%">
+							<h:graphicImage url="/resources/images/oops.png" />
+						</p:layoutUnit>
+						<p:layoutUnit position="center">
+							<h:panelGrid width="100%" columns="2" columnClasses="columnLeftErrorPage,columnRightErrorPage">
+	
+								<p:outputLabel value="#{msg.application_version}" />
+								<p:outputLabel value="#{sessionScope.systemVersion}" />
+	
+								<p:outputLabel value="#{msg.error_exception_name}" />
+								<p:outputLabel value="#{sessionScope.exceptionNameAttribute}" />
+	
+								<p:outputLabel value="#{msg.error_id}" />
+								<p:outputLabel value="#{sessionScope.errorIdAttribute}" />
+	
+								<p:outputLabel value="#{msg.error_user_ip}" />
+								<p:outputLabel value="#{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}" />
+	
+								<p:outputLabel value="#{msg.error_timestamp}" />
+								<p:outputLabel value="#{sessionScope.errorDateTimeAttribute}" />
+	
+								<p:outputLabel value="#{msg.error_exception_ajax_request}" />
+								<p:outputLabel value="#{facesContext.partialViewContext.ajaxRequest ? msg.label_yes : msg.label_no}" />
+	
+								<p:outputLabel value="#{msg.error_transaction}" />
+								<p:outputLabel value="#{sessionScope.transactionCodeAttribute}" />
+	
+								<p:outputLabel value="#{msg.error_message}" />
+								<p:outputLabel value="#{sessionScope.exceptionMessageAttribute}" />
+							</h:panelGrid>
+						</p:layoutUnit>
+						<p:layoutUnit position="south" size="320">
+							<p:panel toggleable="true" header="#{msg.error_exception_details}"
+								style="width:876px; min-width:99%;" collapsed="true">
+								<div style="width: 100%;">
+									<pre>
+										<code>#{of:printStackTrace(sessionScope.exceptionAttribute)}</code>
+									</pre>
+								</div>
+							</p:panel>
+						</p:layoutUnit>
+					</p:layout>
+				</div>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

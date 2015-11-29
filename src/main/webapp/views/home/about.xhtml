@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/MainFace.xhtml">
+
+	<ui:define name="body">
+		<h:form id="mainForm">
+			<p:panel id="toggleable" header="#{msg.label_about}" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" >			
+				<p:ajax event="toggle" />			
+				ABOUT - FIND ME AT /views/home/about.xhtml				
+			</p:panel>																
+		</h:form>
+	</ui:define>
+
+</ui:composition>

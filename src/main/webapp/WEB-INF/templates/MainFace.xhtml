@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<f:view id="mainView">
+		<h:head>
+			<title>#{msg.application_title}</title>
+			<base href="#{request.contextPath}" />
+			<link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/style.css" media="screen" />
+		</h:head>
+		<h:body id="body" onload="flashMessages.update">
+			<ui:include src="MainHead.xhtml" />
+			<ui:include src="MainMenu.xhtml" />			
+			<p:messages id="simpleMessages" globalOnly="true" showDetail="false" autoUpdate="true" closable="true" />
+			<p:growl id="flashMessages" showDetail="true" autoUpdate="true" widgetVar="flashMessages" />
+			<div id="content">
+				<ui:insert name="body">#{msg.application_load_failure}</ui:insert>
+			</div>
+			<ui:include src="MainFoot.xhtml" />
+		</h:body>
+	</f:view>
+</html>
